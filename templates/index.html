@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Static Website Webring</title>
+    
+        <link rel="stylesheet" href="/static/webring.css" />
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+        <link rel="apple-touch-icon-precomposed" href="/favicon.ico">
+    
+        <link rel="webmention" href="https://webmention.jamesg.blog/endpoint" />
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+        <meta name="twitter:card" content="summary">
+    </head>
+    <body>
+        <section class="main_section">
+            <h1>Static Website Webring</h1>
+            <p>Developing a static website can be difficult at times. You are somewhat limited by what you can do without having access to a back-end server, unless you are willing to rely on JavaScript.</p>
+            <p>With that said, static sites can offer a myriad of benefits:</p>
+            <ul>
+                <li>You can keep all of your content on a file system instead of in a database.</li>
+                <li>Your site will likely perform quicker than it would if every web page had to be rendered by a back-end server.</li>
+                <li>Static sites make you think differently about how to publish content on the web.</li>
+                <li>And more...</li>
+            </ul>
+            <p>This webring will automatically create a link between your site and two others on our webring. Whenever someone clicks on the webring on your site, they will see new sites to explore.</p>
+            <p>The goal of this webring is to help share what is possible with static websites. We are doing this by creating a way for you to link to other static websites using webrings.</p>
+            <h2>How do I join?</h2>
+            <p>Joining the Static Website webring is easy. To join, please send an email to <a href="mailto:readers@jamesg.blog">readers@jamesg.blog</a> with the following pieces of information:</p>
+            <ul>
+                <li>Your name</li>
+                <li>Your domain name</li>
+                <li>The name of the static site generator you use</li>
+                <li>A link to the static site generator you use (optional)</li>
+            </ul>
+            <p>To join, you <strong>must build your site using a static site generator</strong>. Your generator can be custom-made or built by someone else. Examples of generators include Jekyll, Hugo, and Eleventy.</p>
+            <p>After you have been accepted, paste the following code into the footer of your website:</p>
+            <pre>
+&lt;a href="https://static-webring.jamesg.blog/previous"&gt;Previous&lt;/a&gt;
+Static Site Webring
+&lt;a href="https://static-webring.jamesg.blog/next"&gt;Next&lt;/a&gt;</pre>
+            <h2>How does it work?</h2>
+            <p>All members paste two links at the bottom of their website: a forward and backward arrow. When clicked, these links will take you to the next and previous links in the webring, respectively.</p>
+            <p>You can leave the webring at any time by removing the webring links from your site.</p>
+            <p>The list of webring members is provided on the right-hand side of this web page.</p>
+            <h2>Source Code</h2>
+            <p>The source code for this webring is available on <a href="https://github.com/capjamesg/static-site-webring">GitHub</a>.</p>
+        </section>
+        <% for @site in @websites %>
+        <section class="project_grid">
+            <div class="project_item social_interaction">
+                <img src="<%= @site.image %>" alt="<%= @site.name %> screenshot">
+                <h2><%= @site.name %></h2>
+                <p><a href="https://<%= @site.domain_name %>"><%= @site.domain_name %></a></p>
+                <p>Built using <a href="https://<% @site.generator_url %>"><%= @site.generator %></a></p>
+                <p><%= @site.description %></p>
+            </div>
+        </section>
+        <% end %>
+    </body>
+</html>
